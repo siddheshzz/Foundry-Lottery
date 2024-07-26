@@ -55,16 +55,19 @@
 *. require() uses more gas than custom error with conditional if statement
         1. Name the custom error as => ```contractname__errorname```
 *. Event should be emitted whenever we update a storage variable.
-        1. Why events-
-            a. Makes migration easier
-            b. makes front end indexing easier
-        2. when emit is called the event log is created which consists of :-
-            a. Address - address of the contract
-            b. Name -  name of event and its parameters
-            c. Topics - this contians the indexed part of event i.e all the variables that are defined as indexed are store here
-            d. Data - all the non indexed vars are store here in hex format
+    1. Why events-
+        a. Makes migration easier
+        b. makes front end indexing easier
+    2. when emit is called the event log is created which consists of :-
+        a. Address - address of the contract
+        b. Name -  name of event and its parameters
+        c. Topics - this contians the indexed part of event i.e all the variables that are defined as indexed are store here
+        d. Data - all the non indexed vars are store here in hex format
 
 
 *. CEI - Checks, Effects(Our own contract), Interations(Other Contracts)
-*. Chainlink Automation 
+*. Chainlink Automation
+*. Deploy:-
+    inherits Script.sol
+
 
