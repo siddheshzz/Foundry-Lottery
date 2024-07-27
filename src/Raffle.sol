@@ -50,6 +50,7 @@ contract Raffle is VRFConsumerBaseV2Plus{
 
 
     constructor(
+
         uint256 entranceFee,
         uint256 interval,
         address vrfCoordinator,
@@ -122,7 +123,7 @@ contract Raffle is VRFConsumerBaseV2Plus{
             revert();
         }
         s_raffleState = RaffleState.CALCULATING;
-        uint256 requestId = s_vrfCoordinator.requestRandomWords(
+        s_vrfCoordinator.requestRandomWords(
             VRFV2PlusClient.RandomWordsRequest({
                 keyHash: i_gasLane,
                 subId: i_subscriptionId,
@@ -156,8 +157,6 @@ contract Raffle is VRFConsumerBaseV2Plus{
         if(!success){
             revert Raffle__TransferFailed();
         }
-        
-
     }
 
 
@@ -165,6 +164,14 @@ contract Raffle is VRFConsumerBaseV2Plus{
 
     function getEntranceFee() external view returns(uint256){
         return i_entranceFee;
+    }
+
+    function getRaffleState() external view returns(RaffleState){
+        return s_raffleState;
+    }
+
+    function getPlayer(uint256 index) external view returns(address){
+        return s_players[index];
     }
 
 }
